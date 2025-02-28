@@ -3,28 +3,26 @@
 #include <omp.h>
 
 long int euler_totient(long int lb, long int ub);
-void run_benchmark();
+void run_benchmark(long int range, int cores);
 
 int main(int argc, char** argv) {
-    long int euler_tot = 0;
+    // if (!(argc > 1)) {
+    //     exit(-1);
+    // }
 
-    if (!(argc > 1)) {
-        exit(-1);
-    }
-
-    long int lb = atoi(argv[1]);
-    long int ub = atoi(argv[2]);
-    long int totient = 0;
+    // long int lb = atoi(argv[1]);
+    // long int ub = atoi(argv[2]);
+    // long int totient = 0;
 
     // Sequential single run bench
     
-    double start = omp_get_wtime();
-    totient = euler_totient(lb, ub);
-    double end = omp_get_wtime();
+    // double start = omp_get_wtime();
+    // totient = euler_totient(lb, ub);
+    // double end = omp_get_wtime();
 
-    printf("Euler Totient(%ld): %ld -> Time Elapsed: %.2f\n", ub, totient, (double) (end - start));
+    // printf("Euler Totient(%ld): %ld -> Time Elapsed: %.2f\n", ub, totient, (double) (end - start));
 
-    // run_benchmark();
+    run_benchmark(atoi(argv[1]), atoi(argv[2]));
 }
 
 int calc_hcf(long int a, long int b) {
@@ -58,16 +56,16 @@ long int euler_totient(long int lb, long int ub) {
     return tot;
 }
 
-void run_benchmark() {
+void run_benchmark(long int range, int cores) {
     double start, end, time_taken;
     long int totient = 0;
 
-    for (long int i = 1; i < 1000000; i += 100000) {
-        start = omp_get_wtime();
-        totient = euler_totient(1, i);
-        end = omp_get_wtime();
+    omp_set_dynamic(0);
+    omp_set_num_threads(1);
 
-        printf("The Euler Totient Sum of %ld -> %ld\n", i, totient);
-        printf("Time Elapsed: %.2f\n\n", (double) (end - start));
-    }
+    start = omp_get_wtime();
+    totient = euler_totient(1, range);
+    end = omp_get_wtime();
+
+    printf("%ld -> %.2f\n", totient, (double) (end - start));
 }

@@ -4,10 +4,10 @@
 #include <omp.h>
 
 long int euler_totient(long int lb, long int ub);
-void run_benchmark(long int range);
+void run_benchmark(long int range, int cores);
 
 int main(int argc, char** argv) {
-    run_benchmark(atoi(argv[1]));
+    run_benchmark(atoi(argv[1]), atoi(argv[2]));
 }
 
 int calc_hcf(long int a, long int b) {
@@ -53,10 +53,13 @@ long int euler_totient(long int lb, long int ub) {
     return tot;
 }
 
-void run_benchmark(long int range) {
+void run_benchmark(long int range, int cores) {
     double start, end, time_taken;
     long int totient = 0;
 
+    omp_set_dynamic(0);
+    omp_set_num_threads(cores);
+    
     start = omp_get_wtime();
     totient = euler_totient(1, range);
     end = omp_get_wtime();
