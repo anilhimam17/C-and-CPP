@@ -6,19 +6,25 @@ long int euler_totient(long int lb, long int ub);
 void run_benchmark();
 
 int main(int argc, char** argv) {
-    // long int euler_tot = 0;
+    long int euler_tot = 0;
 
-    // if (!(argc > 1)) {
-    //     exit(-1);
-    // }
+    if (!(argc > 1)) {
+        exit(-1);
+    }
 
-    // long int lb = atoi(argv[1]);
-    // long int ub = atoi(argv[2]);
+    long int lb = atoi(argv[1]);
+    long int ub = atoi(argv[2]);
+    long int totient = 0;
 
-    // long int totient = euler_totient(lb, ub);
-    // printf("Euler Totient: %ld\n", totient);
+    // Sequential single run bench
+    
+    double start = omp_get_wtime();
+    totient = euler_totient(lb, ub);
+    double end = omp_get_wtime();
 
-    run_benchmark();
+    printf("Euler Totient(%ld): %ld -> Time Elapsed: %.2f\n", ub, totient, (double) (end - start));
+
+    // run_benchmark();
 }
 
 int calc_hcf(long int a, long int b) {
