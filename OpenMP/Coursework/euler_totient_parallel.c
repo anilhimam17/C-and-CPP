@@ -64,6 +64,5 @@ void run_benchmark(long int range, int cores) {
     totient = euler_totient(1, range);
     end = omp_get_wtime();
 
-    printf("The Euler Totient Sum -> %ld\n", totient);
-    printf("Time Elapsed: %.2f\n\n", (double) (end - start));
+    printf("%ld -> %.2f", totient, (double) (end - start));
 }
