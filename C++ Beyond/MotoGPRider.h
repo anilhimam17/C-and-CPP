@@ -9,6 +9,9 @@ class MotoGPRider : public SportsMan {
         std::string bike_make;
         int championship_pts;
     public:
+        // Overiding - Redefining the member function
+        void display_sportsman();
+
         // Getters
         std::string get_bike_make() const;
         int get_championship_pts() const;

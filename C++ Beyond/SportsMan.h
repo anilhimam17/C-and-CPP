@@ -10,6 +10,9 @@ class SportsMan {
         int age;
         std::string sport;
     public:
+        // Member functions
+        void display_sportsman();
+
         // Getters
         std::string get_name() const;
         int get_age() const;

@@ -1,5 +1,12 @@
 #include "MotoGPRider.h"
 
+// Overiding - Redefining a Member Function
+void MotoGPRider::display_sportsman() {
+    SportsMan::display_sportsman();
+    std::cout << "Bike Make: " << bike_make << std::endl;
+    std::cout << "Championship Points: " << championship_pts << std::endl;
+}
+
 // Defining the Getters
 std::string MotoGPRider::get_bike_make() const {
     return bike_make;

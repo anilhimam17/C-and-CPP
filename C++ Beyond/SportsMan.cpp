@@ -1,5 +1,12 @@
 #include "SportsMan.h"
 
+// Member Functions
+void SportsMan::display_sportsman() {
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "Sport: " << sport << std::endl;
+}
+
 // Defining the Getters
 std::string SportsMan::get_name() const {
     return name;
