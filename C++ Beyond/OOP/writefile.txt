@@ -1,0 +1,8 @@
+Heya
+What is happenings here
+Damn, C++ is actually compliant with me in taking input for a file.
+However, the ifstream and ofstream are super counter intuitive.
+Anyways, I have got this covered.
+Let's end this monologue and see if the rest of the program works toooooooo!!!!!
+123423423
+Bye, Now!!!
